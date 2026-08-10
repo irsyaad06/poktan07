@@ -29,4 +29,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function petani()
+    {
+        return $this->hasOne(Petani::class);
+    }
 }

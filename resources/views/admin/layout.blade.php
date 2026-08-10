@@ -138,6 +138,34 @@
             z-index: 999;
         }
 
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: var(--bg-main);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+        }
+
         @media (max-width: 768px) {
             .sidebar {
                 position: fixed;
@@ -175,12 +203,18 @@
             </button>
         </div>
         <ul class="sidebar-menu">
-            <li><a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"><i class="ph-duotone ph-squares-four"></i> Dashboard</a></li>
-            <li><a href="{{ route('users.index') }}" class="{{ request()->routeIs('users.*') ? 'active' : '' }}"><i class="ph-duotone ph-user-check"></i> Persetujuan Akun</a></li>
-            <li><a href="{{ route('petani.index') }}" class="{{ request()->routeIs('petani.*') ? 'active' : '' }}"><i class="ph-duotone ph-users"></i> Data Petani</a></li>
-            <li><a href="{{ route('hasil-panen.index') }}" class="{{ request()->routeIs('hasil-panen.*') ? 'active' : '' }}"><i class="ph-duotone ph-basket"></i> Hasil Panen</a></li>
-            <li><a href="{{ route('agen.index') }}" class="{{ request()->routeIs('agen.*') ? 'active' : '' }}"><i class="ph-duotone ph-handshake"></i> Kemitraan Agen</a></li>
-            <li><a href="{{ route('kegiatan.index') }}" class="{{ request()->routeIs('kegiatan.*') ? 'active' : '' }}"><i class="ph-duotone ph-calendar"></i> Kegiatan</a></li>
+            @if(auth()->check() && auth()->user()->role === 'admin')
+                <li><a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"><i class="ph-duotone ph-squares-four"></i> Dashboard</a></li>
+                <li><a href="{{ route('users.index') }}" class="{{ request()->routeIs('users.*') ? 'active' : '' }}"><i class="ph-duotone ph-user-check"></i> Persetujuan Akun</a></li>
+                <li><a href="{{ route('petani.index') }}" class="{{ request()->routeIs('petani.*') ? 'active' : '' }}"><i class="ph-duotone ph-users"></i> Data Petani</a></li>
+                <li><a href="{{ route('hasil-panen.index') }}" class="{{ request()->routeIs('hasil-panen.*') ? 'active' : '' }}"><i class="ph-duotone ph-basket"></i> Hasil Panen</a></li>
+                <li><a href="{{ route('agen.index') }}" class="{{ request()->routeIs('agen.*') ? 'active' : '' }}"><i class="ph-duotone ph-handshake"></i> Kemitraan Agen</a></li>
+                <li><a href="{{ route('kegiatan.index') }}" class="{{ request()->routeIs('kegiatan.*') ? 'active' : '' }}"><i class="ph-duotone ph-calendar-blank"></i> Kegiatan</a></li>
+            @elseif(auth()->check() && auth()->user()->role === 'petani')
+                <li><a href="{{ route('petani.dashboard') }}" class="{{ request()->routeIs('petani.dashboard') ? 'active' : '' }}"><i class="ph-duotone ph-squares-four"></i> Dashboard</a></li>
+                <li><a href="{{ route('petani.profile') }}" class="{{ request()->routeIs('petani.profile') ? 'active' : '' }}"><i class="ph-duotone ph-user"></i> Profil Saya</a></li>
+                <li><a href="{{ route('petani.hasil-panen.index') }}" class="{{ request()->routeIs('petani.hasil-panen.*') ? 'active' : '' }}"><i class="ph-duotone ph-basket"></i> Hasil Panen Saya</a></li>
+            @endif
         </ul>
         <div style="padding: 1.5rem; border-top: 1px solid var(--border-color);">
             <form action="{{ route('logout') }}" method="POST">
