@@ -30,8 +30,17 @@ class PetaniController extends Controller
             'area' => 'nullable',
             'cert' => 'nullable',
             'desc' => 'nullable',
-            'image' => 'nullable'
+            'image' => 'nullable|image|max:500'
+        ], [
+            'image.max' => 'masukkan gambar kurang dari 500kb',
+            'image.image' => 'File harus berupa gambar.'
         ]);
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('uploads', 'public');
+        } else {
+            unset($data['image']);
+        }
 
         Petani::create($data);
         return redirect()->route('petani.index')->with('success', 'Data Petani berhasil ditambahkan.');
@@ -52,8 +61,17 @@ class PetaniController extends Controller
             'area' => 'nullable',
             'cert' => 'nullable',
             'desc' => 'nullable',
-            'image' => 'nullable'
+            'image' => 'nullable|image|max:500'
+        ], [
+            'image.max' => 'masukkan gambar kurang dari 500kb',
+            'image.image' => 'File harus berupa gambar.'
         ]);
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('uploads', 'public');
+        } else {
+            unset($data['image']);
+        }
 
         $petani->update($data);
         return redirect()->route('petani.index')->with('success', 'Data Petani berhasil diperbarui.');

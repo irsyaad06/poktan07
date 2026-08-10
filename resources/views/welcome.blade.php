@@ -48,7 +48,7 @@
                     <span class="badge" style="background: var(--accent); color: white; left: 1rem; right: auto;">
                         <i class="ph-bold ph-calendar-blank"></i> {{ $kegiatan->date }}
                     </span>
-                    <img src="{{ $kegiatan->image }}" alt="{{ $kegiatan->title }}" class="card-img">
+                    <img src="{{ str_starts_with($kegiatan->image, 'http') ? $kegiatan->image : asset('storage/' . $kegiatan->image) }}" alt="{{ $kegiatan->title }}" class="card-img">
                 </div>
                 <div class="card-content">
                     <h3 class="card-title" style="margin-bottom: 0.8rem; font-size: 1.25rem;">{{ $kegiatan->title }}</h3>
@@ -74,7 +74,7 @@
                     <span class="badge" style="background: var(--primary); color: white;">
                         <i class="ph-fill ph-certificate"></i> {{ $petani->cert }}
                     </span>
-                    <img src="{{ $petani->image }}" alt="{{ $petani->name }}" class="card-img">
+                    <img src="{{ str_starts_with($petani->image, 'http') ? $petani->image : asset('storage/' . $petani->image) }}" alt="{{ $petani->name }}" class="card-img">
                 </div>
                 <div class="card-content">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">

@@ -33,8 +33,17 @@ class HasilPanenController extends Controller
             'grade' => 'nullable',
             'qty' => 'nullable',
             'price' => 'nullable',
-            'image' => 'nullable'
+            'image' => 'nullable|image|max:500'
+        ], [
+            'image.max' => 'masukkan gambar kurang dari 500kb',
+            'image.image' => 'File harus berupa gambar.'
         ]);
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('uploads', 'public');
+        } else {
+            unset($data['image']);
+        }
 
         HasilPanen::create($data);
         return redirect()->route('hasil-panen.index')->with('success', 'Data Hasil Panen berhasil ditambahkan.');
@@ -55,8 +64,17 @@ class HasilPanenController extends Controller
             'grade' => 'nullable',
             'qty' => 'nullable',
             'price' => 'nullable',
-            'image' => 'nullable'
+            'image' => 'nullable|image|max:500'
+        ], [
+            'image.max' => 'masukkan gambar kurang dari 500kb',
+            'image.image' => 'File harus berupa gambar.'
         ]);
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('uploads', 'public');
+        } else {
+            unset($data['image']);
+        }
 
         $hasilPanen->update($data);
         return redirect()->route('hasil-panen.index')->with('success', 'Data Hasil Panen berhasil diperbarui.');

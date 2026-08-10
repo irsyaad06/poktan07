@@ -17,7 +17,7 @@
             </div>
         @endif
 
-        <form action="{{ route('hasil-panen.update', $hasilPanen->id) }}" method="POST">
+        <form action="{{ route('hasil-panen.update', $hasilPanen->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             
@@ -59,8 +59,14 @@
             </div>
 
             <div style="margin-bottom: 2rem;">
-                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">URL Gambar Produk</label>
-                <input type="text" name="image" class="form-control" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);" placeholder="https://..." value="{{ old('image', $hasilPanen->image) }}">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Gambar Produk (Opsional)</label>
+                @if($hasilPanen->image)
+                    <div style="margin-bottom: 1rem;">
+                        <img src="{{ str_starts_with($hasilPanen->image, 'http') ? $hasilPanen->image : asset('storage/' . $hasilPanen->image) }}" alt="Gambar Saat Ini" style="max-width: 150px; border-radius: 8px;">
+                    </div>
+                @endif
+                <input type="file" name="image" class="form-control" accept="image/*" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                <small style="color: var(--text-muted); display: block; margin-top: 0.5rem;">Biarkan kosong jika tidak ingin mengubah gambar. (Maksimal 500KB)</small>
             </div>
 
             <button type="submit" class="btn btn-primary"><i class="ph-bold ph-save"></i> Perbarui Data</button>

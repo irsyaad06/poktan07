@@ -38,7 +38,7 @@
                 $profileWaUrl = "https://wa.me/{$waNumber}?text=" . urlencode($profileMessage);
             @endphp
             <div class="petani-profile animate-on-scroll is-visible">
-                <img src="{{ $petani->image }}" alt="{{ $petani->name }}" class="profile-avatar" style="border-color: var(--primary-light);">
+                <img src="{{ str_starts_with($petani->image, 'http') ? $petani->image : asset('storage/' . $petani->image) }}" alt="{{ $petani->name }}" class="profile-avatar" style="border-color: var(--primary-light);">
                 <h1 class="page-title">{{ $petani->name }}</h1>
                 
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 1.5rem;">
@@ -89,7 +89,7 @@
                             <span class="badge" style="background: var(--accent); color: white;">
                                 <i class="ph-fill ph-star"></i> {{ $item->grade }}
                             </span>
-                            <img src="{{ $item->image }}" alt="{{ $item->name }}" class="card-img">
+                            <img src="{{ str_starts_with($item->image, 'http') ? $item->image : asset('storage/' . $item->image) }}" alt="{{ $item->name }}" class="card-img">
                         </div>
                         <div class="card-content">
                             <h3 class="card-title" style="font-size: 1.25rem;">{{ $item->name }}</h3>

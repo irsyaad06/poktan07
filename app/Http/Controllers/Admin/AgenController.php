@@ -31,8 +31,17 @@ class AgenController extends Controller
             'coverage' => 'nullable',
             'address' => 'nullable',
             'joined' => 'nullable',
-            'image' => 'nullable'
+            'image' => 'nullable|image|max:500'
+        ], [
+            'image.max' => 'masukkan gambar kurang dari 500kb',
+            'image.image' => 'File harus berupa gambar.'
         ]);
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('uploads', 'public');
+        } else {
+            unset($data['image']);
+        }
 
         Agen::create($data);
         return redirect()->route('agen.index')->with('success', 'Data Agen berhasil ditambahkan.');
@@ -52,8 +61,17 @@ class AgenController extends Controller
             'coverage' => 'nullable',
             'address' => 'nullable',
             'joined' => 'nullable',
-            'image' => 'nullable'
+            'image' => 'nullable|image|max:500'
+        ], [
+            'image.max' => 'masukkan gambar kurang dari 500kb',
+            'image.image' => 'File harus berupa gambar.'
         ]);
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('uploads', 'public');
+        } else {
+            unset($data['image']);
+        }
 
         $agen->update($data);
         return redirect()->route('agen.index')->with('success', 'Data Agen berhasil diperbarui.');

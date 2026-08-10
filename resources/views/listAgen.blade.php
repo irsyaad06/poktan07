@@ -53,7 +53,7 @@
                         <span class="badge" style="background: rgba(255, 255, 255, 0.95); color: var(--text-main);">
                             <i class="ph-fill ph-shield-check" style="color: var(--primary);"></i> Verified
                         </span>
-                        <img src="{{ $agen->image }}" alt="{{ $agen->name }}" class="card-img">
+                        <img src="{{ str_starts_with($agen->image, 'http') ? $agen->image : asset('storage/' . $agen->image) }}" alt="{{ $agen->name }}" class="card-img">
                     </div>
                     <div class="card-content">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">

@@ -17,7 +17,7 @@
             </div>
         @endif
 
-        <form action="{{ route('hasil-panen.store') }}" method="POST">
+        <form action="{{ route('hasil-panen.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             
             <div style="margin-bottom: 1.5rem;">
@@ -58,8 +58,9 @@
             </div>
 
             <div style="margin-bottom: 2rem;">
-                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">URL Gambar Produk</label>
-                <input type="text" name="image" class="form-control" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);" placeholder="https://..." value="{{ old('image') }}">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Gambar Produk</label>
+                <input type="file" name="image" class="form-control" accept="image/*" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                <small style="color: var(--text-muted); display: block; margin-top: 0.5rem;">Pilih file gambar (Maksimal 500KB).</small>
             </div>
 
             <button type="submit" class="btn btn-primary"><i class="ph-bold ph-save"></i> Simpan Data</button>
