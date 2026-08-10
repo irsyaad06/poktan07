@@ -23,12 +23,12 @@
         @csrf
         
         <div class="form-group">
-            <label class="form-label" for="name">Nama Produk *</label>
+            <label class="form-label" for="name">Nama Produk <span style="color: #ef4444;">*</span></label>
             <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}" required>
         </div>
 
         <div class="form-group">
-            <label class="form-label" for="price">Harga *</label>
+            <label class="form-label" for="price">Harga <span style="color: #ef4444;">*</span></label>
             <input type="text" id="price" name="price" class="form-control" value="{{ old('price') }}" placeholder="Contoh: Rp 20.000 / kg" required>
         </div>
 
@@ -39,7 +39,7 @@
         </div>
 
         <div class="form-group">
-            <label class="form-label" for="desc">Deskripsi Singkat *</label>
+            <label class="form-label" for="desc">Deskripsi Singkat <span style="color: #ef4444;">*</span></label>
             <textarea id="desc" name="desc" class="form-control" rows="4" required>{{ old('desc') }}</textarea>
         </div>
 
