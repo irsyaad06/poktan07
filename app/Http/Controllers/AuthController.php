@@ -20,8 +20,22 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            
+            if (!$user->is_approved) {
+                Auth::logout();
+                return back()->withErrors([
+                    'email' => 'Akun Anda sedang menunggu persetujuan Admin.',
+                ])->onlyInput('email');
+            }
+
             $request->session()->regenerate();
-            return redirect()->intended('/admin/dashboard');
+            
+            if ($user->role === 'admin') {
+                return redirect()->intended('/admin/dashboard');
+            }
+            
+            return redirect('/');
         }
 
         return back()->withErrors([

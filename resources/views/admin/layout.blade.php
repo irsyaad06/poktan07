@@ -176,6 +176,7 @@
         </div>
         <ul class="sidebar-menu">
             <li><a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"><i class="ph-duotone ph-squares-four"></i> Dashboard</a></li>
+            <li><a href="{{ route('users.index') }}" class="{{ request()->routeIs('users.*') ? 'active' : '' }}"><i class="ph-duotone ph-user-check"></i> Persetujuan Akun</a></li>
             <li><a href="{{ route('petani.index') }}" class="{{ request()->routeIs('petani.*') ? 'active' : '' }}"><i class="ph-duotone ph-users"></i> Data Petani</a></li>
             <li><a href="{{ route('hasil-panen.index') }}" class="{{ request()->routeIs('hasil-panen.*') ? 'active' : '' }}"><i class="ph-duotone ph-basket"></i> Hasil Panen</a></li>
             <li><a href="{{ route('agen.index') }}" class="{{ request()->routeIs('agen.*') ? 'active' : '' }}"><i class="ph-duotone ph-handshake"></i> Kemitraan Agen</a></li>

@@ -66,6 +66,11 @@
         <div class="section-header animate-on-scroll">
             <h2>Keluarga Petani Kami</h2>
             <p>Berkenalan dengan pahlawan pangan lokal kami yang berdedikasi menghasilkan panen terbaik dan telah terverifikasi secara profesional.</p>
+            <div style="margin-top: 1.5rem;">
+                <a href="{{ route('register') }}" class="btn btn-primary" style="font-size: 1.1rem; padding: 0.8rem 1.5rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <i class="ph-bold ph-user-plus"></i> Gabung Kelompok
+                </a>
+            </div>
         </div>
         <div class="grid" id="petani-grid">
             @foreach($petanis as $index => $petani)

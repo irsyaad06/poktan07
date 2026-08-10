@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin Polang 07',
             'email' => 'admin@polang07.com',
             'password' => Hash::make('password'),
+            'role' => 'admin',
+            'is_approved' => true,
         ]);
 
         $petanis = [
