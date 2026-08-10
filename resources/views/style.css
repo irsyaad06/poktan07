@@ -101,13 +101,17 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Attractive Glow Button */
 .btn-glow {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: white !important;
-    border: none;
-    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.4);
     position: relative;
+    padding: 0.75rem 1.75rem;
+    background: linear-gradient(135deg, #ffffff 0%, #bbf7d0 100%);
+    color: #000000 !important;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    cursor: pointer;
     overflow: hidden;
-    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.15);
 }
 
 .btn-glow::before {
@@ -494,17 +498,99 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(0);
 }
 
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--primary-dark);
+    cursor: pointer;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+body.sidebar-mobile-open .sidebar-overlay {
+    display: block;
+    opacity: 1;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
-    .nav-links { display: none; }
+    .mobile-menu-btn { display: block; }
+
+    .nav-links { 
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 6rem 2rem 2rem;
+        box-shadow: none;
+        gap: 1rem;
+        transform: translateX(100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        z-index: 1001;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .nav-links.nav-active {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-links li a {
+        font-size: 1.3rem;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        z-index: 1002;
+        position: relative;
+    }
+
+    .sidebar {
+        position: fixed;
+        margin-left: -250px;
+    }
+    
+    body.sidebar-mobile-open .sidebar {
+        margin-left: 0;
+    }
+
+    .close-sidebar-btn { display: block; }
+
     .hero-tag { font-size: 0.7rem; padding: 0.3rem 0.8rem; margin-top: 1rem; }
     .hero h1 { font-size: 2.8rem; }
-    .hero-content { margin-top: 4rem; text-align: center; margin-inline: auto; }
+    .hero-content { margin-top: 7rem; text-align: center; flex-direction: column !important; gap: 3rem !important; padding-bottom: 2rem; }
+    .hero-content > div { max-width: 100% !important; justify-content: center !important; align-items: center !important; flex-wrap: wrap !important; }
+    /* Center kartu Pusat Bantuan & Portal Anggota di mobile */
+    .hero-cards-wrapper { justify-content: center !important; width: 100%; }
     .hero {
         background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
                     url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1920&q=80') center/cover;
         justify-content: center;
+        align-items: flex-start;
     }
-    .hero-actions { justify-content: center; }
+    .hero-actions { display: flex; flex-direction: column; gap: 1rem; align-items: center; width: 100%; }
+    .hero-actions .btn { width: 100%; justify-content: center; max-width: 300px; }
     .section-header h2 { font-size: 2.25rem; }
 }

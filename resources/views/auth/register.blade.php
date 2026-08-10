@@ -121,6 +121,7 @@
             margin-bottom: 0.25rem;
         }
     </style>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 </head>
 <body>
 

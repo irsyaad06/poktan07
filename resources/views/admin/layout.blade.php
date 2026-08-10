@@ -193,6 +193,7 @@
             }
         }
     </style>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 </head>
 <body>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -227,6 +228,8 @@
             </form>
         </div>
     </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <main class="main-content">
         <header class="topbar">

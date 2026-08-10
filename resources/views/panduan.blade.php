@@ -203,7 +203,63 @@
             padding: 0.75rem;
             border-bottom: 1px solid var(--border-color);
         }
+
+        /* Responsive Panduan */
+        @media (max-width: 768px) {
+            .page-header {
+                padding-top: 6rem;
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+            .page-title {
+                font-size: 2rem !important;
+            }
+            .tabs-nav {
+                gap: 0.25rem;
+                margin-bottom: 1.5rem;
+            }
+            .tab-btn {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+            .guide-section {
+                padding: 1.5rem 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .guide-title {
+                font-size: 1.2rem;
+            }
+            .step-item {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .step-item:not(:last-child)::after {
+                display: none;
+            }
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            .step-content {
+                padding: 1rem;
+            }
+            .step-content h4 {
+                font-size: 1.05rem;
+            }
+            .ui-mockup {
+                overflow-x: auto;
+            }
+            .mock-table {
+                min-width: 420px;
+            }
+            section.section {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+        }
     </style>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 </head>
 <body>
     <!-- Navbar -->
@@ -211,7 +267,8 @@
         <a href="/" class="logo">
             <i class="ph-fill ph-plant"></i> Poktan<span>07</span>
         </a>
-        <ul class="nav-links">
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="ph-bold ph-list"></i></button>
+        <ul class="nav-links" id="navLinks">
             <li><a href="/">Beranda</a></li>
             <li><a href="/#kegiatan">Kegiatan</a></li>
             <li><a href="/list-agen">Kemitraan Agen</a></li>
@@ -489,7 +546,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Poktan 07. Seluruh Hak Cipta Dilindungi Undang-Undang.</p>
+            <p>&copy; 2026 Poktan 07. Seluruh Hak Cipta Dilindungi Undang-Undang. | BEM UNIKOM 25-26 | Merajut Asa</p>
         </div>
     </footer>
 
@@ -514,6 +571,16 @@
                 });
             });
         });
+    </script>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('nav-active');
+            });
+        }
     </script>
 </body>
 </html>

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 </head>
 <body>
     <!-- Navbar -->
@@ -14,7 +15,8 @@
         <a href="/" class="logo">
             <i class="ph-fill ph-plant"></i> Poktan<span>07</span>
         </a>
-        <ul class="nav-links">
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="ph-bold ph-list"></i></button>
+        <ul class="nav-links" id="navLinks">
             <li><a href="/">Beranda</a></li>
             <li><a href="/#kegiatan">Kegiatan</a></li>
             <li><a href="/list-agen" class="active">Kemitraan Agen</a></li>
@@ -121,7 +123,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Poktan 07. Seluruh Hak Cipta Dilindungi Undang-Undang.</p>
+            <p>&copy; 2026 Poktan 07. Seluruh Hak Cipta Dilindungi Undang-Undang. | BEM UNIKOM 25-26 | Merajut Asa</p>
         </div>
     </footer>
 
@@ -138,6 +140,16 @@
 
             document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
         });
+    </script>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('nav-active');
+            });
+        }
     </script>
 </body>
 </html>

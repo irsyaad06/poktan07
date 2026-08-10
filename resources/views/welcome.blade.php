@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 </head>
 <body>
     <!-- Navbar -->
@@ -14,7 +15,8 @@
         <a href="/" class="logo">
             <i class="ph-fill ph-plant"></i> Poktan<span>07</span>
         </a>
-        <ul class="nav-links">
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="ph-bold ph-list"></i></button>
+        <ul class="nav-links" id="navLinks">
             <li><a href="/" class="active">Beranda</a></li>
             <li><a href="#kegiatan">Kegiatan</a></li>
             <li><a href="/list-agen">Kemitraan Agen</a></li>
@@ -32,8 +34,8 @@
 
     <!-- Hero Section -->
     <header class="hero">
-        <div class="hero-content" style="max-width: 1200px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 4rem; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 300px; max-width: 650px;">
+        <div class="hero-content" style="max-width: none; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px; max-width: 550px;">
                 <span class="hero-tag"><i class="ph-fill ph-star"></i> Pertanian Lokal Berkualitas</span>
                 <h1>Membangun Ekosistem <span>Pertanian Modern</span></h1>
                 <p>Poktan 07 berkomitmen untuk menghasilkan produk agrikultur berkualitas tinggi, tersertifikasi, dan berkelanjutan secara langsung dari kebun kami ke tangan Anda.</p>
@@ -42,17 +44,35 @@
                     <a href="/list-agen" class="btn btn-outline">Mitra Distributor</a>
                 </div>
             </div>
-            <div style="flex: 1; min-width: 300px; display: flex; justify-content: center; align-items: center;">
-                <a href="/panduan" class="admin-card" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; text-decoration: none; padding: 2.5rem; border: 1px solid var(--primary-light); background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); transform: translateY(0); transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(5, 150, 105, 0.1); border-radius: var(--radius-lg);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 40px rgba(5, 150, 105, 0.2)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(5, 150, 105, 0.1)';">
-                    <div style="width: 80px; height: 80px; background: rgba(34, 197, 94, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                        <i class="ph-duotone ph-book-open" style="font-size: 3.5rem; color: var(--primary);"></i>
+            <div class="hero-cards-wrapper" style="flex: 1; min-width: 300px; display: flex; justify-content: flex-end; align-items: stretch; gap: 1.5rem; flex-wrap: wrap;">
+                
+                <!-- Card Panduan -->
+                <a href="/panduan" class="admin-card" style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1.5rem; text-decoration: none; padding: 2rem 1.5rem; border: 1px solid var(--border-color); background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); transform: translateY(0); transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0, 0.05); border-radius: var(--radius-lg); width: 260px; text-align: center;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 40px rgba(5, 150, 105, 0.15)'; this.style.borderColor='var(--primary-light)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0, 0.05)'; this.style.borderColor='var(--border-color)';">
+                    <div style="width: 70px; height: 70px; background: rgba(34, 197, 94, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="ph-duotone ph-book-open" style="font-size: 3rem; color: var(--primary);"></i>
                     </div>
-                    <div style="text-align: center;">
-                        <h3 style="color: var(--primary-dark); font-size: 1.3rem; margin-bottom: 0.5rem;">Pusat Bantuan Terpadu</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0; max-width: 220px;">Baca panduan penggunaan sistem secara lengkap di sini.</p>
+                    <div>
+                        <h3 style="color: var(--primary-dark); font-size: 1.15rem; margin-bottom: 0.5rem;">Pusat Bantuan</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0; line-height: 1.5;">Baca panduan penggunaan sistem selengkapnya di sini.</p>
                     </div>
-                    <span class="btn btn-primary" style="margin-top: 0.5rem; padding: 0.6rem 1.5rem; font-size: 0.95rem;">Pelajari Sekarang</span>
+                    <span class="btn btn-outline" style="padding: 0.6rem; font-size: 0.9rem; width: 100%; justify-content: center; border-color: var(--primary); color: var(--primary);">Pelajari Sekarang</span>
                 </a>
+
+                <!-- Card Portal / Login -->
+                <div class="admin-card" style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 2rem 1.5rem; border: 1px solid var(--primary-light); background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(5, 150, 105, 0.15); border-radius: var(--radius-lg); width: 260px; text-align: center;">
+                    <div style="width: 70px; height: 70px; background: rgba(34, 197, 94, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="ph-duotone ph-users-three" style="font-size: 3rem; color: var(--primary);"></i>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--primary-dark); font-size: 1.15rem; margin-bottom: 0.5rem;">Portal Anggota</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0; line-height: 1.5;">Masuk ke dashboard atau daftar sebagai petani baru.</p>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; width: 100%; flex-direction: column;">
+                        <a href="/login" class="btn btn-primary" style="padding: 0.6rem; font-size: 0.9rem; justify-content: center; box-shadow: none;">Login Sekarang</a>
+                        <a href="/register" class="btn btn-outline" style="padding: 0.6rem; font-size: 0.9rem; justify-content: center;">Daftar Akun Baru</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </header>
@@ -163,7 +183,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Poktan 07. Seluruh Hak Cipta Dilindungi Undang-Undang.</p>
+            <p>&copy; 2026 Poktan 07. Seluruh Hak Cipta Dilindungi Undang-Undang. | BEM UNIKOM 25-26 | Merajut Asa</p>
         </div>
     </footer>
 
@@ -215,6 +235,16 @@
 
             document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
         });
+    </script>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('nav-active');
+            });
+        }
     </script>
 </body>
 </html>

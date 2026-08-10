@@ -62,6 +62,7 @@
             border: 1px solid #f87171;
         }
     </style>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 </head>
 <body>
     <div class="login-card">
