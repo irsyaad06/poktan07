@@ -29,7 +29,7 @@
                     <td>{{ $item->grade }}</td>
                     <td>{{ $item->price }}</td>
                     <td>
-                        <a href="{{ route('hasil-panen.edit', $item->id) }}" class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Edit</a>
+                        <a href="{{ route('hasil-panen.edit', $item->id) }}" class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Ubah</a>
                         <form action="{{ route('hasil-panen.destroy', $item->id) }}" method="POST" style="display: inline-block;">
                             @csrf
                             @method('DELETE')

@@ -29,6 +29,7 @@ class HasilPanenController extends Controller
         $data = $request->validate([
             'petani_id' => 'required|exists:petanis,id',
             'name' => 'required',
+            'desc' => 'required',
             'type' => 'nullable',
             'grade' => 'nullable',
             'qty' => 'nullable',
@@ -60,6 +61,7 @@ class HasilPanenController extends Controller
         $data = $request->validate([
             'petani_id' => 'required|exists:petanis,id',
             'name' => 'required',
+            'desc' => 'required',
             'type' => 'nullable',
             'grade' => 'nullable',
             'qty' => 'nullable',

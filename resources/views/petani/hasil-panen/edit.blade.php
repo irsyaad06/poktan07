@@ -18,7 +18,7 @@
     </div>
 @endif
 
-<div class="admin-card" style="max-width: 600px;">
+<div class="admin-card" style="max-width: 800px;">
     <form action="{{ route('petani.hasil-panen.update', $hasilPanen->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -28,24 +28,43 @@
             <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $hasilPanen->name) }}" required>
         </div>
 
-        <div class="form-group">
-            <label class="form-label" for="price">Harga <span style="color: #ef4444;">*</span></label>
-            <input type="text" id="price" name="price" class="form-control" value="{{ old('price', $hasilPanen->price) }}" required>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+            <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="type">Tipe / Metode Tanam</label>
+                <input type="text" id="type" name="type" class="form-control" value="{{ old('type', $hasilPanen->type) }}" placeholder="Contoh: Hidroponik">
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="grade">Grade / Kualitas</label>
+                <input type="text" id="grade" name="grade" class="form-control" value="{{ old('grade', $hasilPanen->grade) }}" placeholder="Contoh: Grade A">
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+            <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="price">Harga <span style="color: #ef4444;">*</span></label>
+                <input type="text" id="price" name="price" class="form-control" value="{{ old('price', $hasilPanen->price) }}" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="qty">Kuantitas / Stok</label>
+                <input type="text" id="qty" name="qty" class="form-control" value="{{ old('qty', $hasilPanen->qty) }}" placeholder="Contoh: 100 kg">
+            </div>
         </div>
 
         <div class="form-group">
             <label class="form-label" for="image">Gambar Produk (Maks 500KB)</label>
-            @if($hasilPanen->image)
-                <div style="margin-bottom: 1rem;">
-                    <img src="{{ Str::startsWith($hasilPanen->image, 'http') ? $hasilPanen->image : asset('storage/' . $hasilPanen->image) }}" alt="{{ $hasilPanen->name }}" style="height: 100px; width: 100px; object-fit: cover; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                </div>
-            @endif
-            <input type="file" id="image" name="image" class="form-control" accept="image/*">
+            <div style="margin-bottom: 1rem;">
+                @if($hasilPanen->image)
+                    <img id="imagePreview" src="{{ Str::startsWith($hasilPanen->image, 'http') ? $hasilPanen->image : asset('storage/' . $hasilPanen->image) }}" alt="{{ $hasilPanen->name }}" style="height: 150px; width: 150px; object-fit: cover; border-radius: var(--radius-md); border: 2px solid var(--border-color);">
+                @else
+                    <img id="imagePreview" src="https://placehold.co/150x150?text=Pilih+Gambar" alt="Preview" style="height: 150px; width: 150px; object-fit: cover; border-radius: var(--radius-md); border: 2px dashed var(--border-color);">
+                @endif
+            </div>
+            <input type="file" id="image" name="image" class="form-control" accept="image/*" onchange="previewImage(event)">
             <small style="color: var(--text-muted); display: block; margin-top: 0.5rem;">Biarkan kosong jika tidak ingin mengubah gambar.</small>
         </div>
 
         <div class="form-group">
-            <label class="form-label" for="desc">Deskripsi Singkat <span style="color: #ef4444;">*</span></label>
+            <label class="form-label" for="desc">Deskripsi Produk <span style="color: #ef4444;">*</span></label>
             <textarea id="desc" name="desc" class="form-control" rows="4" required>{{ old('desc', $hasilPanen->desc) }}</textarea>
         </div>
 
@@ -56,4 +75,18 @@
         </div>
     </form>
 </div>
+
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('imagePreview');
+            output.src = reader.result;
+            output.style.border = '2px solid var(--primary)';
+        };
+        if(event.target.files[0]){
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    }
+</script>
 @endsection

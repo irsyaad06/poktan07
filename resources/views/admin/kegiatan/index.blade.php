@@ -23,7 +23,7 @@
                     <td style="font-weight: 500;">{{ $kegiatan->title }}</td>
                     <td>{{ $kegiatan->date }}</td>
                     <td>
-                        <a href="{{ route('kegiatan.edit', $kegiatan->id) }}" class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Edit</a>
+                        <a href="{{ route('kegiatan.edit', $kegiatan->id) }}" class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Ubah</a>
                         <form action="{{ route('kegiatan.destroy', $kegiatan->id) }}" method="POST" style="display: inline-block;">
                             @csrf
                             @method('DELETE')

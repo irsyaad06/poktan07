@@ -37,6 +37,9 @@ class HasilPanenController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'desc' => 'required|string',
+            'type' => 'nullable|string|max:255',
+            'grade' => 'nullable|string|max:255',
+            'qty' => 'nullable|string|max:255',
             'price' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:500',
         ], [
@@ -77,6 +80,9 @@ class HasilPanenController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'desc' => 'required|string',
+            'type' => 'nullable|string|max:255',
+            'grade' => 'nullable|string|max:255',
+            'qty' => 'nullable|string|max:255',
             'price' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:500',
         ], [

@@ -18,28 +18,48 @@
     </div>
 @endif
 
-<div class="admin-card" style="max-width: 600px;">
+<div class="admin-card" style="max-width: 800px;">
     <form action="{{ route('petani.hasil-panen.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         
         <div class="form-group">
             <label class="form-label" for="name">Nama Produk <span style="color: #ef4444;">*</span></label>
-            <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}" required>
+            <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}" placeholder="Contoh: Tomat Ceri" required>
         </div>
 
-        <div class="form-group">
-            <label class="form-label" for="price">Harga <span style="color: #ef4444;">*</span></label>
-            <input type="text" id="price" name="price" class="form-control" value="{{ old('price') }}" placeholder="Contoh: Rp 20.000 / kg" required>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+            <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="type">Tipe / Metode Tanam</label>
+                <input type="text" id="type" name="type" class="form-control" value="{{ old('type') }}" placeholder="Contoh: Hidroponik">
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="grade">Grade / Kualitas</label>
+                <input type="text" id="grade" name="grade" class="form-control" value="{{ old('grade') }}" placeholder="Contoh: Grade A">
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+            <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="price">Harga <span style="color: #ef4444;">*</span></label>
+                <input type="text" id="price" name="price" class="form-control" value="{{ old('price') }}" placeholder="Contoh: Rp 20.000 / kg" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="qty">Kuantitas / Stok</label>
+                <input type="text" id="qty" name="qty" class="form-control" value="{{ old('qty') }}" placeholder="Contoh: 100 kg">
+            </div>
         </div>
 
         <div class="form-group">
             <label class="form-label" for="image">Gambar Produk (Maks 500KB)</label>
-            <input type="file" id="image" name="image" class="form-control" accept="image/*">
+            <div style="margin-bottom: 1rem;">
+                <img id="imagePreview" src="https://placehold.co/150x150?text=Pilih+Gambar" alt="Preview" style="height: 150px; width: 150px; object-fit: cover; border-radius: var(--radius-md); border: 2px dashed var(--border-color);">
+            </div>
+            <input type="file" id="image" name="image" class="form-control" accept="image/*" onchange="previewImage(event)">
             <small style="color: var(--text-muted); display: block; margin-top: 0.5rem;">Format: JPG, PNG, WEBP. Maks 500KB.</small>
         </div>
 
         <div class="form-group">
-            <label class="form-label" for="desc">Deskripsi Singkat <span style="color: #ef4444;">*</span></label>
+            <label class="form-label" for="desc">Deskripsi Produk <span style="color: #ef4444;">*</span></label>
             <textarea id="desc" name="desc" class="form-control" rows="4" required>{{ old('desc') }}</textarea>
         </div>
 
@@ -50,4 +70,18 @@
         </div>
     </form>
 </div>
+
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('imagePreview');
+            output.src = reader.result;
+            output.style.border = '2px solid var(--primary)';
+        };
+        if(event.target.files[0]){
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    }
+</script>
 @endsection

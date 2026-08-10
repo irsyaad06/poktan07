@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Polang 07</title>
+    <title>Admin Dashboard - Poktan 07</title>
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
@@ -22,6 +22,9 @@
             transition: margin-left 0.3s ease, transform 0.3s ease;
             flex-shrink: 0;
             z-index: 1000;
+            position: sticky;
+            top: 0;
+            height: 100vh;
         }
         
         body.sidebar-collapsed .sidebar {
@@ -196,7 +199,7 @@
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <a href="/admin/dashboard" class="logo">
-                <i class="ph-fill ph-plant"></i> Polang<span>07</span>
+                <i class="ph-fill ph-plant"></i> Poktan<span>07</span>
             </a>
             <button class="close-sidebar-btn" id="closeSidebarBtn">
                 <i class="ph-bold ph-x"></i>
@@ -212,8 +215,9 @@
                 <li><a href="{{ route('kegiatan.index') }}" class="{{ request()->routeIs('kegiatan.*') ? 'active' : '' }}"><i class="ph-duotone ph-calendar-blank"></i> Kegiatan</a></li>
             @elseif(auth()->check() && auth()->user()->role === 'petani')
                 <li><a href="{{ route('petani.dashboard') }}" class="{{ request()->routeIs('petani.dashboard') ? 'active' : '' }}"><i class="ph-duotone ph-squares-four"></i> Dashboard</a></li>
-                <li><a href="{{ route('petani.profile') }}" class="{{ request()->routeIs('petani.profile') ? 'active' : '' }}"><i class="ph-duotone ph-user"></i> Profil Saya</a></li>
-                <li><a href="{{ route('petani.hasil-panen.index') }}" class="{{ request()->routeIs('petani.hasil-panen.*') ? 'active' : '' }}"><i class="ph-duotone ph-basket"></i> Hasil Panen Saya</a></li>
+                <li><a href="{{ route('petani.hasil-panen.index') }}" class="{{ request()->routeIs('petani.hasil-panen.*') ? 'active' : '' }}"><i class="ph-duotone ph-plant"></i> Hasil Panen Saya</a></li>
+                <li><a href="{{ route('petani.agen.index') }}" class="{{ request()->routeIs('petani.agen.*') ? 'active' : '' }}"><i class="ph-duotone ph-handshake"></i> Mitra Agen</a></li>
+                <li><a href="{{ route('petani.profile') }}" class="{{ request()->routeIs('petani.profile') ? 'active' : '' }}"><i class="ph-duotone ph-user-circle"></i> Profil Saya</a></li>
             @endif
         </ul>
         <div style="padding: 1.5rem; border-top: 1px solid var(--border-color);">

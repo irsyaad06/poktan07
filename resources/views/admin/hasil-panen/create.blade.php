@@ -58,6 +58,11 @@
             </div>
 
             <div style="margin-bottom: 2rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Deskripsi Produk <span style="color: #ef4444;">*</span></label>
+                <textarea name="desc" class="form-control" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);" rows="4" required>{{ old('desc') }}</textarea>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
                 <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Gambar Produk</label>
                 <input type="file" name="image" class="form-control" accept="image/*" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
                 <small style="color: var(--text-muted); display: block; margin-top: 0.5rem;">Pilih file gambar (Maksimal 500KB).</small>

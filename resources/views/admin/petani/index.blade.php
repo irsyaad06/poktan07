@@ -25,7 +25,7 @@
                     <td>{{ $petani->role }}</td>
                     <td>{{ $petani->location }}</td>
                     <td>
-                        <a href="{{ route('petani.edit', $petani->id) }}" class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Edit</a>
+                        <a href="{{ route('petani.edit', $petani->id) }}" class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Ubah</a>
                         <form action="{{ route('petani.destroy', $petani->id) }}" method="POST" style="display: inline-block;">
                             @csrf
                             @method('DELETE')

@@ -27,7 +27,7 @@
                     <td>{{ $agen->contact }}</td>
                     <td>{{ $agen->coverage }}</td>
                     <td>
-                        <a href="{{ route('agen.edit', $agen->id) }}" class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Edit</a>
+                        <a href="{{ route('agen.edit', $agen->id) }}" class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Ubah</a>
                         <form action="{{ route('agen.destroy', $agen->id) }}" method="POST" style="display: inline-block;">
                             @csrf
                             @method('DELETE')

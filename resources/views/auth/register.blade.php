@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabung Kelompok Tani - Polang 07</title>
+    <title>Gabung Kelompok Tani - Poktan 07</title>
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
@@ -127,7 +127,7 @@
     <div class="register-container">
         <div class="register-header">
             <a href="/" class="logo">
-                <i class="ph-fill ph-plant"></i> Polang<span>07</span>
+                <i class="ph-fill ph-plant"></i> Poktan<span>07</span>
             </a>
             <p>Daftar sebagai anggota petani baru.</p>
         </div>

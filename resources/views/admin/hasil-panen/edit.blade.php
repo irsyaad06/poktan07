@@ -59,10 +59,15 @@
             </div>
 
             <div style="margin-bottom: 2rem;">
-                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Gambar Produk (Opsional)</label>
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Deskripsi Produk <span style="color: #ef4444;">*</span></label>
+                <textarea name="desc" class="form-control" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);" rows="4" required>{{ old('desc', $hasilPanen->desc) }}</textarea>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Gambar Produk</label>
                 @if($hasilPanen->image)
                     <div style="margin-bottom: 1rem;">
-                        <img src="{{ str_starts_with($hasilPanen->image, 'http') ? $hasilPanen->image : asset('storage/' . $hasilPanen->image) }}" alt="Gambar Saat Ini" style="max-width: 150px; border-radius: 8px;">
+                        <img src="{{ Str::startsWith($hasilPanen->image, 'http') ? $hasilPanen->image : asset('storage/' . $hasilPanen->image) }}" alt="Preview" style="height: 100px; width: 100px; object-fit: cover; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
                     </div>
                 @endif
                 <input type="file" name="image" class="form-control" accept="image/*" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);">

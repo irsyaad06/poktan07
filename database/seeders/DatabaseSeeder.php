@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         // Admin User
         User::create([
-            'name' => 'Admin Polang 07',
-            'email' => 'admin@polang07.com',
+            'name' => 'Admin Poktan 07',
+            'email' => 'admin@poktan07.com',
             'password' => Hash::make('password'),
             'role' => 'admin',
             'is_approved' => true,
@@ -172,7 +172,7 @@ class DatabaseSeeder extends Seeder
                 'title' => 'Panen Raya Padi Bersama',
                 'date' => '25 Juli',
                 'image' => 'https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?auto=format&fit=crop&w=500&q=60',
-                'desc' => 'Kegiatan gotong royong anggota Polang 07 dalam memanen padi jenis unggulan yang dihadiri oleh dinas pertanian setempat.'
+                'desc' => 'Kegiatan gotong royong anggota Poktan 07 dalam memanen padi jenis unggulan yang dihadiri oleh dinas pertanian setempat.'
             ],
             [
                 'title' => 'Distribusi Bibit Unggul',

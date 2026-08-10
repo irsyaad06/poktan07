@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Hasil Tani - Polang 07</title>
+    <title>Katalog Hasil Tani - Poktan 07</title>
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -12,13 +12,21 @@
     <!-- Navbar -->
     <nav class="navbar scrolled" id="navbar">
         <a href="/" class="logo">
-            <i class="ph-fill ph-plant"></i> Polang<span>07</span>
+            <i class="ph-fill ph-plant"></i> Poktan<span>07</span>
         </a>
         <ul class="nav-links">
             <li><a href="/">Beranda</a></li>
             <li><a href="/#kegiatan">Kegiatan</a></li>
             <li><a href="/list-agen">Kemitraan Agen</a></li>
-            <li><a href="/#petani" class="btn btn-glow">Daftar Petani</a></li>
+            @if(auth()->check())
+                @if(auth()->user()->role === 'admin')
+                    <li><a href="{{ route('admin.dashboard') }}" class="btn btn-glow"><i class="ph-bold ph-squares-four"></i> Dashboard Admin</a></li>
+                @elseif(auth()->user()->role === 'petani')
+                    <li><a href="{{ route('petani.dashboard') }}" class="btn btn-glow"><i class="ph-bold ph-squares-four"></i> Dashboard Petani</a></li>
+                @endif
+            @else
+                <li><a href="/#petani" class="btn btn-glow">Daftar Petani</a></li>
+            @endif
         </ul>
     </nav>
 
@@ -34,7 +42,7 @@
                 if (substr($waNumber, 0, 2) !== '62') {
                     $waNumber = '62' . $waNumber;
                 }
-                $profileMessage = "Halo {$petani->name}, saya tertarik dengan hasil panen Anda dari Polang 07.";
+                $profileMessage = "Halo {$petani->name}, saya tertarik dengan hasil panen Anda dari Poktan 07.";
                 $profileWaUrl = "https://wa.me/{$waNumber}?text=" . urlencode($profileMessage);
             @endphp
             <div class="petani-profile animate-on-scroll is-visible">
@@ -97,7 +105,7 @@
                             <div style="margin: 1rem 0; display: flex; justify-content: center; align-items: center; background: var(--bg-main); padding: 0.75rem; border-radius: var(--radius-md);">
                                 <div style="display: flex; flex-direction: column; text-align: center;">
                                     <span style="font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em;">Harga</span>
-                                    <span class="product-price">{{ $item->price }}</span>
+                                    <span class="product-price">{{ is_numeric($item->price) ? 'Rp ' . number_format($item->price, 0, ',', '.') : (str_contains(strtolower($item->price), 'rp') ? $item->price : 'Rp ' . $item->price) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -113,12 +121,37 @@
         </div>
     </section>
 
+    <!-- Mitra Section -->
+    <section class="section" style="background: var(--bg-surface); padding-top: 3rem; padding-bottom: 3rem; border-top: 1px solid var(--border-color);">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 5%;">
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 2rem;">
+                <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="ph-duotone ph-handshake" style="color: var(--primary); vertical-align: middle;"></i> Mitra Distribusi</h2>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Jaringan agen yang siap membantu menyalurkan hasil panen terbaik kami.</p>
+            </div>
+            
+            <div style="display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 1.5rem; scrollbar-width: none; -ms-overflow-style: none;">
+                <style>
+                    .mitra-scroll::-webkit-scrollbar { display: none; }
+                </style>
+                <div class="mitra-scroll" style="display: flex; gap: 1.5rem; width: 100%; overflow-x: auto;">
+                    @foreach($agens as $agen)
+                    <div style="flex: 0 0 auto; width: 180px; background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem 1rem; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                        <img src="{{ str_starts_with($agen->image, 'http') ? $agen->image : asset('storage/' . $agen->image) }}" alt="{{ $agen->name }}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 50%; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 2px solid white;">
+                        <h4 style="margin: 0 0 0.5rem; font-size: 1rem; font-weight: 600; color: var(--text-main);">{{ $agen->name }}</h4>
+                        <span style="font-size: 0.75rem; background: rgba(34, 197, 94, 0.1); color: var(--primary-dark); padding: 0.25rem 0.75rem; border-radius: 99px; font-weight: 500;">{{ $agen->type }}</span>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">
                 <a href="/" class="logo">
-                    <i class="ph-fill ph-plant"></i> Polang<span>07</span>
+                    <i class="ph-fill ph-plant"></i> Poktan<span>07</span>
                 </a>
                 <p>Memberdayakan petani lokal melalui praktik pertanian modern dan berkelanjutan untuk hasil panen yang optimal dan sehat.</p>
             </div>
@@ -132,7 +165,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Polang 07. Seluruh Hak Cipta Dilindungi Undang-Undang.</p>
+            <p>&copy; 2026 Poktan 07. Seluruh Hak Cipta Dilindungi Undang-Undang.</p>
         </div>
     </footer>
 

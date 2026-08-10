@@ -27,7 +27,8 @@ class FrontendController extends Controller
     {
         $id = $request->get('id');
         $petani = Petani::with('hasilPanens')->find($id);
+        $agens = Agen::all();
         
-        return view('hasilpanenTani', compact('petani'));
+        return view('hasilpanenTani', compact('petani', 'agens'));
     }
 }

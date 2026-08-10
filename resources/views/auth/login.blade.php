@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin - Polang 07</title>
+    <title>Login Admin - Poktan 07</title>
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
@@ -67,7 +67,7 @@
     <div class="login-card">
         <div class="login-header">
             <a href="/" class="logo" style="justify-content: center; font-size: 1.8rem;">
-                <i class="ph-fill ph-plant"></i> Polang<span>07</span>
+                <i class="ph-fill ph-plant"></i> Poktan<span>07</span>
             </a>
             <p style="color: var(--text-muted); margin-top: 0.5rem;">Admin Dashboard Login</p>
         </div>
@@ -82,7 +82,7 @@
             @csrf
             <div class="form-group">
                 <label class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" required autofocus placeholder="admin@polang07.com">
+                <input type="email" name="email" class="form-control" required autofocus placeholder="admin@poktan07.com">
             </div>
             <div class="form-group">
                 <label class="form-label">Password</label>
@@ -90,8 +90,13 @@
             </div>
             <button type="submit" class="btn btn-primary" style="width: 100%;">Masuk ke Dashboard</button>
         </form>
+        <div style="text-align: center; margin-top: 1.5rem; margin-bottom: 1rem;">
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">
+                Belum punya akun? <a href="{{ route('register') }}" style="color: var(--primary); text-decoration: none; font-weight: 600;">Daftar di sini</a>
+            </p>
+        </div>
         
-        <div style="text-align: center; margin-top: 1.5rem;">
+        <div style="text-align: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
             <a href="/" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;"><i class="ph-bold ph-arrow-left"></i> Kembali ke Beranda</a>
         </div>
     </div>

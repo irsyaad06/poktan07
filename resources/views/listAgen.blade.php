@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaringan Kemitraan - Polang 07</title>
+    <title>Jaringan Kemitraan - Poktan 07</title>
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -12,13 +12,21 @@
     <!-- Navbar -->
     <nav class="navbar scrolled" id="navbar">
         <a href="/" class="logo">
-            <i class="ph-fill ph-plant"></i> Polang<span>07</span>
+            <i class="ph-fill ph-plant"></i> Poktan<span>07</span>
         </a>
         <ul class="nav-links">
             <li><a href="/">Beranda</a></li>
             <li><a href="/#kegiatan">Kegiatan</a></li>
             <li><a href="/list-agen" class="active">Kemitraan Agen</a></li>
-            <li><a href="/#petani" class="btn btn-glow">Daftar Petani</a></li>
+            @if(auth()->check())
+                @if(auth()->user()->role === 'admin')
+                    <li><a href="{{ route('admin.dashboard') }}" class="btn btn-glow"><i class="ph-bold ph-squares-four"></i> Dashboard Admin</a></li>
+                @elseif(auth()->user()->role === 'petani')
+                    <li><a href="{{ route('petani.dashboard') }}" class="btn btn-glow"><i class="ph-bold ph-squares-four"></i> Dashboard Petani</a></li>
+                @endif
+            @else
+                <li><a href="/#petani" class="btn btn-glow">Daftar Petani</a></li>
+            @endif
         </ul>
     </nav>
 
@@ -27,7 +35,7 @@
         <span class="hero-tag" style="background: var(--bg-surface);"><i class="ph-fill ph-handshake"></i> Relasi Bisnis Terpercaya</span>
         <h1 class="page-title">Jaringan Mitra Resmi</h1>
         <p style="color: var(--text-muted); max-width: 600px; margin: 1rem auto 0; font-size: 1.1rem;">
-            Daftar distributor dan agen terverifikasi skala regional hingga nasional yang dipercaya untuk menyalurkan komoditas unggulan Polang 07.
+            Daftar distributor dan agen terverifikasi skala regional hingga nasional yang dipercaya untuk menyalurkan komoditas unggulan Poktan 07.
         </p>
     </header>
 
@@ -85,15 +93,7 @@
                         <div class="card-footer" style="padding-top: 1rem; border-top: none; display: flex; flex-direction: column; gap: 1rem;">
                             <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; font-size: 0.85rem; color: var(--text-muted);">
                                 <span><i class="ph-fill ph-calendar-blank"></i> {{ $agen->joined }}</span>
-                                @if($agen->id !== 1)
-                                    <span><i class="ph-fill ph-phone"></i> {{ $agen->contact }}</span>
-                                @endif
                             </div>
-                            @if($agen->id !== 1)
-                                <a href="https://wa.me/{{ $waNumber }}" target="_blank" class="btn btn-primary" style="width: 100%; background: #25D366; box-shadow: 0 4px 14px 0 rgba(37, 211, 102, 0.39);">
-                                    <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.2rem;"></i> Hubungi Agen
-                                </a>
-                            @endif
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <a href="/" class="logo">
-                    <i class="ph-fill ph-plant"></i> Polang<span>07</span>
+                    <i class="ph-fill ph-plant"></i> Poktan<span>07</span>
                 </a>
                 <p>Memberdayakan petani lokal melalui praktik pertanian modern dan berkelanjutan untuk hasil panen yang optimal.</p>
             </div>
@@ -121,7 +121,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Polang 07. Seluruh Hak Cipta Dilindungi Undang-Undang.</p>
+            <p>&copy; 2026 Poktan 07. Seluruh Hak Cipta Dilindungi Undang-Undang.</p>
         </div>
     </footer>
 
