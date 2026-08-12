@@ -15,7 +15,7 @@
         <a href="/" class="logo">
             <i class="ph-fill ph-plant"></i> Poktan<span>07</span>
         </a>
-        <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="ph-bold ph-list"></i></button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Buka Menu"><i class="ph-bold ph-list"></i></button>
         <ul class="nav-links" id="navLinks">
             <li><a href="/">Beranda</a></li>
             <li><a href="/#kegiatan">Kegiatan</a></li>
@@ -185,14 +185,41 @@
         });
     </script>
 
+
+
+    <!-- Nav Drawer -->
+    <div class="nav-drawer-overlay" id="drawerOverlay"></div>
+    <nav class="nav-drawer" id="navDrawer">
+        <div class="nav-drawer-header">
+            <a href="/" class="logo"><i class="ph-fill ph-plant"></i> Poktan<span>07</span></a>
+            <button class="nav-drawer-close" id="drawerClose"><i class="ph-bold ph-x"></i></button>
+        </div>
+        <ul class="nav-drawer-links">
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/#kegiatan">Kegiatan</a></li>
+            <li><a href="/list-agen">Kemitraan Agen</a></li>
+            @if(auth()->check())
+                @if(auth()->user()->role === 'admin')
+                    <li><a href="{{ route('admin.dashboard') }}" class="btn-glow"><i class="ph-bold ph-squares-four"></i> Dashboard Admin</a></li>
+                @elseif(auth()->user()->role === 'petani')
+                    <li><a href="{{ route('petani.dashboard') }}" class="btn-glow"><i class="ph-bold ph-squares-four"></i> Dashboard Petani</a></li>
+                @endif
+            @else
+                <li><a href="/register" class="btn-glow"><i class="ph-bold ph-user-plus"></i> Daftar Sekarang</a></li>
+                <li><a href="/login">Login</a></li>
+            @endif
+        </ul>
+    </nav>
     <script>
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        if (mobileMenuBtn && navLinks) {
-            mobileMenuBtn.addEventListener('click', () => {
-                navLinks.classList.toggle('nav-active');
-            });
-        }
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const drawer = document.getElementById('navDrawer');
+        const overlay = document.getElementById('drawerOverlay');
+        const closeBtn = document.getElementById('drawerClose');
+        function openDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+        function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow=''; }
+        if(menuBtn) menuBtn.addEventListener('click', openDrawer);
+        if(closeBtn) closeBtn.addEventListener('click', closeDrawer);
+        if(overlay) overlay.addEventListener('click', closeDrawer);
     </script>
 </body>
 </html>

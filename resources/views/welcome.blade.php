@@ -15,7 +15,7 @@
         <a href="/" class="logo">
             <i class="ph-fill ph-plant"></i> Poktan<span>07</span>
         </a>
-        <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="ph-bold ph-list"></i></button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Buka Menu"><i class="ph-bold ph-list"></i></button>
         <ul class="nav-links" id="navLinks">
             <li><a href="/" class="active">Beranda</a></li>
             <li><a href="#kegiatan">Kegiatan</a></li>
@@ -33,52 +33,70 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-content" style="max-width: none; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 300px; max-width: 550px;">
-                <span class="hero-tag"><i class="ph-fill ph-star"></i> Pertanian Lokal Berkualitas</span>
-                <h1>Membangun Ekosistem <span>Pertanian Modern</span></h1>
-                <p>Poktan 07 berkomitmen untuk menghasilkan produk agrikultur berkualitas tinggi, tersertifikasi, dan berkelanjutan secara langsung dari kebun kami ke tangan Anda.</p>
-                <div class="hero-actions">
-                    <a href="#petani" class="btn btn-primary">Lihat Profil Petani</a>
-                    <a href="/list-agen" class="btn btn-outline">Mitra Distributor</a>
-                </div>
+    <header class="hero" style="padding-bottom: 10rem;">
+        <div class="hero-content">
+            <span class="hero-tag"><i class="ph-fill ph-star"></i> Pertanian Lokal Berkualitas</span>
+            <h1>Membangun Ekosistem <span>Pertanian Modern</span></h1>
+            <p>Poktan 07 berkomitmen untuk menghasilkan produk agrikultur berkualitas tinggi, tersertifikasi, dan berkelanjutan secara langsung dari kebun kami ke tangan Anda.</p>
+            <div class="hero-actions">
+                <a href="#petani" class="btn btn-primary">Lihat Profil Petani</a>
+                <a href="/list-agen" class="btn btn-outline">Mitra Distributor</a>
             </div>
-            <div class="hero-cards-wrapper" style="flex: 1; min-width: 300px; display: flex; justify-content: flex-end; align-items: stretch; gap: 1.5rem; flex-wrap: wrap;">
-                
+        </div>
+    </header>
+
+    <!-- Portal Overlapping Section -->
+    <section class="portal-overlap-section">
+        <div class="portal-overlap-container animate-on-scroll">
+
+            <!-- Header label -->
+            <div class="portal-overlap-header">
+                <span class="portal-label"><i class="ph-fill ph-rocket-launch"></i> Mulai Perjalanan Anda</span>
+                <h2>Akses Platform Poktan 07</h2>
+                <p>Pilih jalur yang sesuai — pelajari panduan sistem kami atau langsung masuk ke portal anggota untuk mengelola aktivitas pertanian Anda.</p>
+            </div>
+
+            <!-- Cards Row -->
+            <div class="portal-cards-row">
+
                 <!-- Card Panduan -->
-                <a href="/panduan" class="admin-card" style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1.5rem; text-decoration: none; padding: 2rem 1.5rem; border: 1px solid var(--border-color); background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); transform: translateY(0); transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0, 0.05); border-radius: var(--radius-lg); width: 260px; text-align: center;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 40px rgba(5, 150, 105, 0.15)'; this.style.borderColor='var(--primary-light)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0, 0.05)'; this.style.borderColor='var(--border-color)';">
-                    <div style="width: 70px; height: 70px; background: rgba(34, 197, 94, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                        <i class="ph-duotone ph-book-open" style="font-size: 3rem; color: var(--primary);"></i>
+                <a href="/panduan" class="portal-card portal-card-guide">
+                    <div class="portal-card-icon">
+                        <i class="ph-duotone ph-book-open"></i>
                     </div>
-                    <div>
-                        <h3 style="color: var(--primary-dark); font-size: 1.15rem; margin-bottom: 0.5rem;">Pusat Bantuan</h3>
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0; line-height: 1.5;">Baca panduan penggunaan sistem selengkapnya di sini.</p>
+                    <div class="portal-card-body">
+                        <h3>Pusat Bantuan</h3>
+                        <p>Panduan lengkap penggunaan sistem, langkah demi langkah, tersedia untuk semua pengguna baru maupun lama.</p>
                     </div>
-                    <span class="btn btn-outline" style="padding: 0.6rem; font-size: 0.9rem; width: 100%; justify-content: center; border-color: var(--primary); color: var(--primary);">Pelajari Sekarang</span>
+                    <span class="portal-card-action btn btn-outline">
+                        <i class="ph-bold ph-arrow-right"></i> Pelajari Sekarang
+                    </span>
                 </a>
 
+                <!-- Divider -->
+                <div class="portal-divider"></div>
+
                 <!-- Card Portal / Login -->
-                <div class="admin-card" style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 2rem 1.5rem; border: 1px solid var(--primary-light); background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(5, 150, 105, 0.15); border-radius: var(--radius-lg); width: 260px; text-align: center;">
-                    <div style="width: 70px; height: 70px; background: rgba(34, 197, 94, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                        <i class="ph-duotone ph-users-three" style="font-size: 3rem; color: var(--primary);"></i>
+                <div class="portal-card portal-card-member">
+                    <div class="portal-card-icon portal-card-icon--accent">
+                        <i class="ph-duotone ph-users-three"></i>
                     </div>
-                    <div>
-                        <h3 style="color: var(--primary-dark); font-size: 1.15rem; margin-bottom: 0.5rem;">Portal Anggota</h3>
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0; line-height: 1.5;">Masuk ke dashboard atau daftar sebagai petani baru.</p>
+                    <div class="portal-card-body">
+                        <h3>Portal Anggota</h3>
+                        <p>Masuk ke dashboard pribadi Anda atau daftar sebagai petani baru untuk mulai bergabung bersama komunitas Poktan 07.</p>
                     </div>
-                    <div style="display: flex; gap: 0.5rem; width: 100%; flex-direction: column;">
-                        <a href="/login" class="btn btn-primary" style="padding: 0.6rem; font-size: 0.9rem; justify-content: center; box-shadow: none;">Login Sekarang</a>
-                        <a href="/register" class="btn btn-outline" style="padding: 0.6rem; font-size: 0.9rem; justify-content: center;">Daftar Akun Baru</a>
+                    <div class="portal-card-btns">
+                        <a href="/login" class="btn btn-primary"><i class="ph-bold ph-sign-in"></i> Login Sekarang</a>
+                        <a href="/register" class="btn btn-outline"><i class="ph-bold ph-user-plus"></i> Daftar Akun Baru</a>
                     </div>
                 </div>
 
             </div>
         </div>
-    </header>
+    </section>
 
     <!-- Kegiatan Section -->
-    <section id="kegiatan" class="section bg-main">
+    <section id="kegiatan" class="section bg-main" style="padding-top: 8rem;">
         <div class="section-header animate-on-scroll">
             <h2>Kegiatan Kelompok Tani</h2>
             <p>Dokumentasi aktivitas dan program pemberdayaan yang dilakukan oleh anggota Poktan 07 untuk meningkatkan kualitas dan produktivitas pertanian.</p>
@@ -237,14 +255,41 @@
         });
     </script>
 
+
+
+    <!-- Nav Drawer -->
+    <div class="nav-drawer-overlay" id="drawerOverlay"></div>
+    <nav class="nav-drawer" id="navDrawer">
+        <div class="nav-drawer-header">
+            <a href="/" class="logo"><i class="ph-fill ph-plant"></i> Poktan<span>07</span></a>
+            <button class="nav-drawer-close" id="drawerClose"><i class="ph-bold ph-x"></i></button>
+        </div>
+        <ul class="nav-drawer-links">
+            <li><a href="/"  class="active">Beranda</a></li>
+            <li><a href="#kegiatan">Kegiatan</a></li>
+            <li><a href="/list-agen">Kemitraan Agen</a></li>
+            @if(auth()->check())
+                @if(auth()->user()->role === 'admin')
+                    <li><a href="{{ route('admin.dashboard') }}" class="btn-glow"><i class="ph-bold ph-squares-four"></i> Dashboard Admin</a></li>
+                @elseif(auth()->user()->role === 'petani')
+                    <li><a href="{{ route('petani.dashboard') }}" class="btn-glow"><i class="ph-bold ph-squares-four"></i> Dashboard Petani</a></li>
+                @endif
+            @else
+                <li><a href="/register" class="btn-glow"><i class="ph-bold ph-user-plus"></i> Daftar Sekarang</a></li>
+                <li><a href="/login">Login</a></li>
+            @endif
+        </ul>
+    </nav>
     <script>
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        if (mobileMenuBtn && navLinks) {
-            mobileMenuBtn.addEventListener('click', () => {
-                navLinks.classList.toggle('nav-active');
-            });
-        }
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const drawer = document.getElementById('navDrawer');
+        const overlay = document.getElementById('drawerOverlay');
+        const closeBtn = document.getElementById('drawerClose');
+        function openDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+        function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow=''; }
+        if(menuBtn) menuBtn.addEventListener('click', openDrawer);
+        if(closeBtn) closeBtn.addEventListener('click', closeDrawer);
+        if(overlay) overlay.addEventListener('click', closeDrawer);
     </script>
 </body>
 </html>
